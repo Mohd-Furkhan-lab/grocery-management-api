@@ -70,24 +70,24 @@ def update_items(id,price=None,quantity=None):
         if id:
             if price != None and quantity !=None:
                 curosr.execute("UPDATE Items SET Price = ? , Quantity = ? WHERE Id = ?",(price,quantity,id))
-                row_count=curosr.rowcount()
+                row_count=curosr.rowcount
                 if row_count != 0:
                     return {"Message" : "Updated Successfully"}
                 else : return None
             elif price ==None and quantity !=None:
                 curosr.execute("UPDATE Items SET Quantity = ? WHERE Id = ?",(quantity,id))
-                row_count=curosr.rowcount()
+                row_count=curosr.rowcount
                 if row_count != 0:
                     return {"Message" : "Updated Successfully"}
                 else : return None
             elif price !=None and quantity == None:
                 curosr.execute("UPDATE Items SET Price = ? WHERE Id = ?",(price,id))
-                row_count=curosr.rowcount()
+                row_count=curosr.rowcount
                 if row_count != 0:
                     return {"Message" : "Updated Successfully"}
                 else : return None
             elif price == None and quantity == None:
-                row_count=curosr.rowcount()
+                row_count=curosr.rowcount
                 if row_count != 0:
                     return {"Message" : "Updated Successfully"}
                 else : return None
@@ -97,7 +97,7 @@ def delete_items(id):
     with get_db() as conn:
         curosr = conn.cursor()
         curosr.execute("DELETE FROM Items WHERE Id = ?",(id,))
-        row_count=curosr.rowcount()
+        row_count=curosr.rowcount
         if row_count != 0:
             return {"Message" : "Deleted Successfully"}
         else : return None
